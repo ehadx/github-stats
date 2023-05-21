@@ -1,4 +1,4 @@
-# [My GitHub Stats Visualization](https://github.com/ehadx/github-stats)
+# My GitHub Stats Visualization
 
 <!--
 https://github.community/t/support-theme-context-for-images-in-light-vs-dark-mode/147981/84
@@ -12,4 +12,4 @@ https://github.community/t/support-theme-context-for-images-in-light-vs-dark-mod
 
 # Credits
 
-Check out [jstrieb/github-stats](https://github.com/jstrieb/github-stats) to setup your own github stats repo
+Check out [jstrieb/github-stats](https://github.com/jstrieb/github-stats) for more info on how to generate your own github stat images
