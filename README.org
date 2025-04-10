@@ -1,0 +1,10 @@
+* [[https://github.com/ehadx/github-stats][GitHub Statistics Visualization]]
+
+#+CAPTION: A preview for the generated image
+#+NAME:   language-stats-visualization
+[[https://github.com/ehadx/github-stats/blob/master/generated/languages.svg]]
+
+** Secrets
+
+- =ACCESS_TOKEN= the github access token.
+- =COMMIT_NAME= and =COMMIT_EMAIL= used when the workflow commits the generated files.

@@ -1,0 +1,36 @@
+name: Generate statistics images
+
+on:
+  push:
+    branches: [ "master" ]
+  schedule:
+    - cron: "5 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    #- name: Build
+    #  run: cargo build --verbose --release
+    - name: Run
+      env: # Or as an environment variable
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      run: cargo run --verbose --release
+      # Commit all changed files to the repository
+    - name: Commit to the repo
+      env: # Or as an environment variable
+        COMMITTER_NAME: ${{ secrets.COMMITTER_NAME }}
+        COMMITTER_EMAIL: ${{ secrets.COMMITTER_EMAIL }}
+      run: |
+        git config --global user.name "${COMMITTER_NAME:=ehadx}"
+        git config --global user.email "${COMMITTER_EMAIL:=github-stats[bot]@ehadx.github.io}"
+        git add .
+        # Force the build to succeed, even if no files were changed
+        git commit -m 'Update generated files' || true
+        git push
