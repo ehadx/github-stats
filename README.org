@@ -7,4 +7,5 @@
 ** Secrets
 
 - =ACCESS_TOKEN= the github access token.
+- =ONLY_OWNED_REPOS= set to =true= or =1= to generate statistics only for user owned repositories.
 - =COMMIT_NAME= and =COMMIT_EMAIL= used when the workflow commits the generated files.

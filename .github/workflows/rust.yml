@@ -16,20 +16,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    #- name: Build
-    #  run: cargo build --verbose --release
+
     - name: Run
       env: # Or as an environment variable
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        ONLY_OWNED_REPOS: ${{ secrets.ONLY_OWNED_REPOS }}
       run: cargo run --verbose --release
+
       # Commit all changed files to the repository
     - name: Commit to the repo
       env: # Or as an environment variable
-        COMMITTER_NAME: ${{ secrets.COMMITTER_NAME }}
-        COMMITTER_EMAIL: ${{ secrets.COMMITTER_EMAIL }}
+        COMMIT_NAME: ${{ secrets.COMMIT_NAME }}
+        COMMIT_EMAIL: ${{ secrets.COMMIT_EMAIL }}
       run: |
-        git config --global user.name "${COMMITTER_NAME:=ehadx}"
-        git config --global user.email "${COMMITTER_EMAIL:=github-stats[bot]@ehadx.github.io}"
+        git config --global user.name "${COMMIT_NAME:=ehadx}"
+        git config --global user.email "${COMMIT_EMAIL:=github-stats[bot]@ehadx.github.io}"
         git add .
         # Force the build to succeed, even if no files were changed
         git commit -m 'Update generated files' || true
